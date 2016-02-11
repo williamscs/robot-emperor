@@ -1,23 +1,23 @@
 var missionList = {
 	"A Bounty Protected": {
-		"back":  "/img/Mission/AVP/A-Bounty-Protected-Back.jpg",
-		"front": "/img/Mission/AVP/A-Bounty-Protected-Front.jpg"
+		"back":  "Mission/AVP/A-Bounty-Protected-Back.jpg",
+		"front": "Mission/AVP/A-Bounty-Protected-Front.jpg"
 	},
 	"Armed and Operational": {
-		"back":  "/img/Mission/AVP/Armed-and-Operational-Back.jpg",
-		"front": "/img/Mission/AVP/Armed-and-Operational-Front.jpg"
+		"back":  "Mission/AVP/Armed-and-Operational-Back.jpg",
+		"front": "Mission/AVP/Armed-and-Operational-Front.jpg"
 	},
 	"Back Room Bargains": {
-		"back":  "/img/Mission/AVP/Back-Room-Bargains-Back.jpg",
-		"front": "/img/Mission/AVP/Back-Room-Bargains-Front.jpg"
+		"back":  "Mission/AVP/Back-Room-Bargains-Back.jpg",
+		"front": "Mission/AVP/Back-Room-Bargains-Front.jpg"
 	},
 	"Binary Revolution": {
-		"back":  "/img/Mission/AVP/Binary-Revolution-Back.jpg",
-		"front": "/img/Mission/AVP/Binary-Revolution-Front.jpg"
+		"back":  "Mission/AVP/Binary-Revolution-Back.jpg",
+		"front": "Mission/AVP/Binary-Revolution-Front.jpg"
 	},
 	"Brace for Impact": {
-		"back":  "/img/Mission/AVP/Brace-For-Impact-Back.jpg",
-		"front": "/img/Mission/AVP/Brace-For-Impact-Front.jpg"
+		"back":  "Mission/AVP/Brace-For-Impact-Back.jpg",
+		"front": "Mission/AVP/Brace-For-Impact-Front.jpg"
 	}
 
 }
@@ -58,10 +58,10 @@ $(function() {
 				console.log(missionName);
 				var missionCard = missionList[missionName];
 				console.log(JSON.stringify(missionCard));
-				$('#mission-card-front').attr('src', missionCard.front);
+				$('#mission-card-front').attr('src', imgRoot + missionCard.front);
 				console.log(JSON.stringify(missionCard.front));
 				$('.flip-container').slideDown();
-				$('#mission-card-back').attr('src', missionCard.back);
+				$('#mission-card-back').attr('src', imgRoot + missionCard.back);
 
 
 				$('#mission-card-front').click(function() {
