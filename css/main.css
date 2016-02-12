@@ -73,7 +73,7 @@ body {
     border-bottom: 20px solid #e44d26;
 }
 
-.footer-container,
+/*.footer-container,
 .main aside {
     border-top: 20px solid #e44d26;
 }
@@ -82,7 +82,7 @@ body {
 .footer-container,
 .main aside {
     background: #f16529;
-}
+}*/
 
 .title {
     color: white;
@@ -138,7 +138,7 @@ nav a:hover {
 }
 
 .footer-container footer {
-    color: white;
+    color: #2e2e2e;
     padding: 20px 0;
 }
 
@@ -165,6 +165,8 @@ nav a:hover {
 
 .card {
     border-radius: 5%;
+    width: 187px;
+    height: 281px;
 }
 
 /* ==========================================================================
