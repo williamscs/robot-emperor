@@ -1,15 +1,6 @@
 
 var aeDeckInit = [
 "Blitz-1.png",
-"Blitz-2.png",
-// "Blitz-3.png",
-// "Blitz-4.png",
-// "Blitz-5.png",
-// "Blitz-6.png",
-// "Blitz-7.png",
-// "Blitz-8.png",
-// "Blitz-9.png",
-// "Blitz-10.png",
 "Blue-1.png",
 "Blue-2.png",
 "Blue-3.png",
@@ -35,26 +26,52 @@ var aeDeckInit = [
 "Red-5.png",
 "Red-6.png"
 ];
-var aeDeck = aeDeckInit.slice(0);
 $('#ae-drawn-card').hide();
 $('#ae-draw-pile').click(function() {
-	if(aeDeck.length > 0){
-		ae.draw(aeDeck);
+	if(ae.aeDeck.length > 0){
+		ae.draw();
 	} else {
-		aeDeck = aeDeckInit.slice(0);
-		$('#ae-deck-back').show();
-		$('#ae-drawn-card').hide();
+		ae.init();
 	}
 });
 
+$('#numBlitz').change(function(event) {
+	ae.init();
+	ae.cleanOutBlitz();
+	var blitzCards = parseInt(event.target.value, 10);
+	ae.insertBlitz(blitzCards);
+});
+
 var ae = {
-	draw: function(aeDeck) {
-		var index = Math.random() * (aeDeck.length - 1);
-		var img = aeDeck.splice(index, 1);
+	aeDeck: [],
+	init: function() {
+		this.aeDeck = aeDeckInit.slice(0);
+		$('#ae-deck-back').show();
+		$('#ae-drawn-card').hide();
+	},
+	draw: function() {
+		var index = Math.random() * (this.aeDeck.length - 1);
+		var img = this.aeDeck.splice(index, 1);
 		$('#ae-drawn-card').attr('src', imgRoot + 'AE/' + img);
 		$('#ae-drawn-card').show();
-		if(aeDeck.length === 0){
+		if(this.aeDeck.length === 0){
 			$('#ae-deck-back').hide();
 		}
+	},
+	cleanOutBlitz: function() {
+		var index;
+		while ((index = this.aeDeck.indexOf("Blitz-1.png")) !== -1) {
+			this.aeDeck.splice(index, 1);
+		}
+	},
+	insertBlitz: function(numBlitz) {
+		for(var i = 0; i < numBlitz; i++){
+			this.aeDeck.push("Blitz-1.png");
+		}
+	},
+	getDeck: function() {
+		console.log(JSON.stringify(this.aeDeck));
 	}
-}
+};
+
+ae.init();
