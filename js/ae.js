@@ -1,15 +1,15 @@
 
-var aeDeck = [
+var aeDeckInit = [
 "Blitz-1.png",
-"Blitz-10.png",
 "Blitz-2.png",
-"Blitz-3.png",
-"Blitz-4.png",
-"Blitz-5.png",
-"Blitz-6.png",
-"Blitz-7.png",
-"Blitz-8.png",
-"Blitz-9.png",
+// "Blitz-3.png",
+// "Blitz-4.png",
+// "Blitz-5.png",
+// "Blitz-6.png",
+// "Blitz-7.png",
+// "Blitz-8.png",
+// "Blitz-9.png",
+// "Blitz-10.png",
 "Blue-1.png",
 "Blue-2.png",
 "Blue-3.png",
@@ -35,19 +35,26 @@ var aeDeck = [
 "Red-5.png",
 "Red-6.png"
 ];
-$('#ae-deck-back').click(function() {
+var aeDeck = aeDeckInit.slice(0);
+$('#ae-drawn-card').hide();
+$('#ae-draw-pile').click(function() {
 	if(aeDeck.length > 0){
-		var index = Math.random() * (aeDeck.length - 1);
-		var img = aeDeck.splice(index, 1);
-		$('#ae-drawn-card').attr('src', imgRoot + 'AE/' + img);
-		if(aeDeck.length === 0){
-			$('#ae-deck-back').hide();
-		}
+		ae.draw(aeDeck);
+	} else {
+		aeDeck = aeDeckInit.slice(0);
+		$('#ae-deck-back').show();
+		$('#ae-drawn-card').hide();
 	}
 });
 
 var ae = {
-	draw: function() {
-
+	draw: function(aeDeck) {
+		var index = Math.random() * (aeDeck.length - 1);
+		var img = aeDeck.splice(index, 1);
+		$('#ae-drawn-card').attr('src', imgRoot + 'AE/' + img);
+		$('#ae-drawn-card').show();
+		if(aeDeck.length === 0){
+			$('#ae-deck-back').hide();
+		}
 	}
 }
